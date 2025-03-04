@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/infrastructure/database/prisma/seed.js"
+    "prisma/seed.js"
   ],
   "exclude": [
     "node_modules"

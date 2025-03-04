@@ -1376,7 +1376,7 @@ export const fetchSingleProduct = async (productId: string) => {
       id: productId,
     },
   });
-  if (!product) {
+  if (!product) { 
     redirect('/products');
   }
   return product;
@@ -2527,7 +2527,7 @@ export const imageSchema = z.object({
 
 function validateImageFile() {
   const maxUploadSize = 1024 * 1024;
-  const acceptedFileTypes = ['image/'];
+  const acceptedFileTypes = ['image/']; 
   return z
     .instanceof(File)
     .refine((file) => {
