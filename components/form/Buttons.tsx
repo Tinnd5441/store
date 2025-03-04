@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { ReloadIcon } from '@radix-ui/react-icons';
-import { useFormStatus } from 'react-dom';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { SignInButton } from '@clerk/nextjs';
-import { FaRegHeart, FaHeart } from 'react-icons/fa';
-import { LuTrash2, LuPenSquare } from 'react-icons/lu';
+import { ReloadIcon } from "@radix-ui/react-icons";
+import { useFormStatus } from "react-dom";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { SignInButton } from "@clerk/nextjs";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { LuTrash2, LuPenSquare } from "react-icons/lu";
 
-type btnSize = 'default' | 'lg' | 'sm';
+type btnSize = "default" | "lg" | "sm";
 
 type SubmitButtonProps = {
   className?: string;
@@ -17,21 +17,21 @@ type SubmitButtonProps = {
 };
 
 export function SubmitButton({
-  className = '',
-  text = 'submit',
-  size = 'lg',
+  className = "",
+  text = "submit",
+  size = "lg",
 }: SubmitButtonProps) {
   const { pending } = useFormStatus();
   return (
     <Button
-      type='submit'
+      type="submit"
       disabled={pending}
-      className={cn('capitalize', className)}
+      className={cn("capitalize", className)}
       size={size}
     >
       {pending ? (
         <>
-          <ReloadIcon className='mr-2 h-4 w-4 animate-spin' />
+          <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
           Please wait...
         </>
       ) : (
@@ -41,16 +41,16 @@ export function SubmitButton({
   );
 }
 
-type actionType = 'edit' | 'delete';
+type actionType = "edit" | "delete";
 
 export const IconButton = ({ actionType }: { actionType: actionType }) => {
   const { pending } = useFormStatus();
 
   const renderIcon = () => {
     switch (actionType) {
-      case 'edit':
+      case "edit":
         return <LuPenSquare />;
-      case 'delete':
+      case "delete":
         return <LuTrash2 />;
       default:
         const never: never = actionType;
@@ -59,24 +59,24 @@ export const IconButton = ({ actionType }: { actionType: actionType }) => {
   };
   return (
     <Button
-      type='submit'
-      size='icon'
-      variant='link'
-      className='p-2 cursor-pointer'
+      type="submit"
+      size="icon"
+      variant="link"
+      className="p-2 cursor-pointer"
     >
-      {pending ? <ReloadIcon className='animate-spin' /> : renderIcon()}
+      {pending ? <ReloadIcon className="animate-spin" /> : renderIcon()}
     </Button>
   );
 };
 
 export const CardSignInButton = () => {
   return (
-    <SignInButton mode='modal'>
+    <SignInButton mode="modal">
       <Button
-        type='button'
-        size='icon'
-        variant='outline'
-        className='p-2 cursor-pointer'
+        type="button"
+        size="icon"
+        variant="outline"
+        className="p-2 cursor-pointer"
         asChild
       >
         <FaRegHeart />
@@ -89,13 +89,13 @@ export const CardSubmitButton = ({ isFavorite }: { isFavorite: boolean }) => {
   const { pending } = useFormStatus();
   return (
     <Button
-      type='submit'
-      size='icon'
-      variant='outline'
-      className='p-2 cursor-pointer'
+      type="submit"
+      size="icon"
+      variant="outline"
+      className="p-2 cursor-pointer"
     >
       {pending ? (
-        <ReloadIcon className='animate-spin' />
+        <ReloadIcon className="animate-spin" />
       ) : isFavorite ? (
         <FaHeart />
       ) : (
@@ -107,8 +107,8 @@ export const CardSubmitButton = ({ isFavorite }: { isFavorite: boolean }) => {
 
 export const ProductSignInButton = () => {
   return (
-    <SignInButton mode='modal'>
-      <Button type='button' className='mt-8 capitalize'>
+    <SignInButton mode="modal">
+      <Button type="button" className="mt-8 capitalize">
         sign in
       </Button>
     </SignInButton>
