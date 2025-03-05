@@ -1,7 +1,26 @@
-import React from 'react'
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
 
-export default function PriceInput() {
+const name = "price";
+type FormInputNumberProps = {
+  defaultValue?: number;
+};
+
+function PriceInput({ defaultValue }: FormInputNumberProps) {
   return (
-    <div>PriceInput</div>
-  )
+    <div className="mb-2">
+      <Label htmlFor="price" className="capitalize">
+        Price ($)
+      </Label>
+      <Input
+        id={name}
+        type="number"
+        name={name}
+        min={0}
+        defaultValue={defaultValue || 100}
+        required
+      />
+    </div>
+  );
 }
+export default PriceInput;

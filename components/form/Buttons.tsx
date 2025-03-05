@@ -4,9 +4,11 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 import { useFormStatus } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { LuSettings, LuTrash2 } from "react-icons/lu";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { SignInButton } from "@clerk/nextjs";
-import { FaRegHeart, FaHeart } from "react-icons/fa";
-import { LuTrash2, LuPenSquare } from "react-icons/lu";
+// import { SignInButton } from "@clerk/nextjs";
+// import { FaRegHeart, FaHeart } from "react-icons/fa";
 
 type btnSize = "default" | "lg" | "sm";
 
@@ -22,6 +24,7 @@ export function SubmitButton({
   size = "lg",
 }: SubmitButtonProps) {
   const { pending } = useFormStatus();
+
   return (
     <Button
       type="submit"
@@ -40,16 +43,14 @@ export function SubmitButton({
     </Button>
   );
 }
-
 type actionType = "edit" | "delete";
-
 export const IconButton = ({ actionType }: { actionType: actionType }) => {
   const { pending } = useFormStatus();
 
   const renderIcon = () => {
     switch (actionType) {
       case "edit":
-        return <LuPenSquare />;
+        return <LuSettings />;
       case "delete":
         return <LuTrash2 />;
       default:
@@ -57,6 +58,7 @@ export const IconButton = ({ actionType }: { actionType: actionType }) => {
         throw new Error(`Invalid action type: ${never}`);
     }
   };
+
   return (
     <Button
       type="submit"
@@ -64,7 +66,7 @@ export const IconButton = ({ actionType }: { actionType: actionType }) => {
       variant="link"
       className="p-2 cursor-pointer"
     >
-      {pending ? <ReloadIcon className="animate-spin" /> : renderIcon()}
+      {pending ? <ReloadIcon className=" animate-spin" /> : renderIcon()}
     </Button>
   );
 };
@@ -92,10 +94,10 @@ export const CardSubmitButton = ({ isFavorite }: { isFavorite: boolean }) => {
       type="submit"
       size="icon"
       variant="outline"
-      className="p-2 cursor-pointer"
+      className=" p-2 cursor-pointer"
     >
       {pending ? (
-        <ReloadIcon className="animate-spin" />
+        <ReloadIcon className=" animate-spin" />
       ) : isFavorite ? (
         <FaHeart />
       ) : (
@@ -108,8 +110,8 @@ export const CardSubmitButton = ({ isFavorite }: { isFavorite: boolean }) => {
 export const ProductSignInButton = () => {
   return (
     <SignInButton mode="modal">
-      <Button type="button" className="mt-8 capitalize">
-        sign in
+      <Button type="button" size="default" className="mt-8">
+        Please Sign In
       </Button>
     </SignInButton>
   );
